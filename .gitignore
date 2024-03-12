@@ -1,0 +1,51 @@
+# system files
+.DS_STORE
+
+# Cache / Builds / Distribution / Packaging
+dist/
+build/
+__pycache__/
+*.egg-info
+temp/
+tmp/
+*.py[cod]
+*$py.class
+target/
+__pypackages__/
+*.old
+.eggs
+*.so
+
+# Install
+install/
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# docs
+public
+builds
+_build
+build
+ebooks
+*.ppmd
+*.pdf
+
+# pyenv
+.python-version
+
+# IPython
+profile_default/
+ipython_config.py
+
+# PyCharm
+.idea
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VSCode
+#.vscode # keep these for ease of setup
