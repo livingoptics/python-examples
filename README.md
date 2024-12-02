@@ -34,7 +34,13 @@ Dimensionality reduction (Fruit bruise ID) | NDVI Spectral index (Plant health -
 :------------: |  :----------: |
 [![Dim_reduction](./applications/dimensionality-reduction/media/fruit-bruising.gif)](./applications/dimensionality-reduction/README.md)  | [![NDVI](./applications/NDVI/media/ndvi.gif)](https://github.com/livingoptics/sdk-examples/blob/929cbe85edcf5119eab7632e626b71f86102ab11/src/python/examples/applications/NDVI_from_file.py) |
 
-## Examples listing
+
+| Spectrally enhanced object idenfication and segmentation |
+| :------------: |
+[![segmentation-and-spectral-classification](./applications/media/fruit-recoginition-spectra-apples.gif)](https://github.com/livingoptics/spatial-spectral-ml/tree/main) |
+
+
+### Examples listing
 
 All examples require an install of the LO python SDK within a python virtual enviroment for details see the [install guide](https://docs.livingoptics.com/sdk/install-guide.html#custom-python-environment). 
 
@@ -42,6 +48,7 @@ Note: this requires registration see [getting started](#getting-started) for det
 
 Example | About | Data samples |
 :--------------------|:--------------------------------------|:-------|
+[Segmentation with Spectral Classification](https://github.com/livingoptics/spatial-spectral-ml/tree/main) | Example of spectral classifier trained on minimal data integrated into a semantic segmentation pipeline, enabling subclass recognition of objects beyond the capabilities of standard RGB data. | [data](https://huggingface.co/datasets/LivingOptics/hyperspectral-fruit)|
 [Spectral detection](./spectral-detection/README.md) | Example of how run a simple sklearn classifier on spectral data and visualise the result. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/spectral-detection.zip)|
 [Spectrally enhanced object detection](./enhanced-object-detection/README.md) | Example of how LO's spectral information and be used to improve object detectors such as YOLO and SSD. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/enhanced-object-detection.zip) |
 [Dimensionality reduction](./dimensionality-reduction/README.md) | Performing dimensionality reduction techniques such as PCA and LDA on spatial spectral data. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/bruised-apple.zip)|
@@ -78,5 +85,26 @@ Routine | About |
 |[Jetson inference](./integrations/jetson/README.md) | Integrations of popular jetson libaries with the Living Optics camera with application examples that utilising the libaries |
 [Jupyter notebooks](./integrations/jupyter/README.md) | Integration with Jupyter contains examples and talk throughs of the LO SDK with Jupyter notebooks |
 
+## Scripts and processing examples:
+
+Script | About | Prerequisists |
+:-------------------------|:----------------------|:-----|
+|[Convert lo format scene view to mp4](./scripts/lo_to_mp4.py) | This script converts a lo data stream to a mp4 video | [opencv-python](https://pypi.org/project/opencv-python/) |
+|[Run maskrcnn model with lo stream](./scripts/lo_with_maskrcnn.py) | This script runs a off the shelf maskrcnn model on the lo data stream, with the required preprocessing |  [opencv-python](https://pypi.org/project/opencv-python/) <br> [torch](https://pypi.org/project/torch/) <br> [torchvision](https://pypi.org/project/torchvision/) |
+
 ### More coming soon 💪🏼
 
+
+## Contribution Guidelines
+We welcome contributions to enhance this project. Please follow these steps to contribute:
+
+**Fork the Repository**: Create a fork of this repository to your GitHub account.
+
+**Create a Branch**: Create a new branch for your changes.
+**Make Changes**: Make your changes and commit them with a clear and descriptive message.
+
+**Create a Pull Request**: Submit a pull request with a description of your changes.
+
+## Support
+
+For any questions, contact us at [Living Optics support](https://www.livingoptics.com/support).
