@@ -1,7 +1,7 @@
 # ----------------------------- IMPORT PACKAGES ------------------------------
 import cv2
-import numpy as np
 import torch
+from lo.sdk.helpers.import_numpy_or_cupy import xp
 from lo.sdk.api.acquisition.data.decode import SpectralDecoder
 from lo.sdk.api.acquisition.data.formats import LORAWtoRGB8
 from lo.sdk.api.acquisition.io.open import open as lo_open
@@ -19,7 +19,7 @@ def percentile_norm(im: xp.ndarray, low: int = 1, high: int = 95) -> xp.ndarray:
     Normalise the image based on percentile values.
 
     Args:
-        im (xp.ndarray): The ixput image.
+        im (xp.ndarray): The input image.
         low (int): The lower percentile for normalization.
         high (int): The higher percentile for normalization.
 

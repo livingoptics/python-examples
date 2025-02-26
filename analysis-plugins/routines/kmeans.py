@@ -27,7 +27,7 @@ class KMeansClustering(BaseAnalysis):
     ):
         if clusters > 5 or clusters < 0:
             _logger.warning(
-                "Invalid input for clusters...\nSetting defualt value of 2..."
+                "Invalid input for clusters...\nSetting default value of 2..."
             )
             clusters = 2
 

@@ -9,10 +9,10 @@ from typing import Tuple
 
 import cv2
 import numpy as np
-from matplotlib import cm
 from lo.sdk.api.acquisition.data.formats import _BAYER_CONFIG_RGGB
 from lo.sdk.api.acquisition.io.open import open as sdk_open
 from lo.sdk.tools.analysis.apps import BaseAnalysis
+from matplotlib import cm
 from sklearn.neighbors import KDTree, KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
 

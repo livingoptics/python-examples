@@ -13,36 +13,46 @@ Spectral enhanced object detection |
 These examples require the yolo dependencies:
 
 ```bash
-pip install huggingface_hub ultralytics torch
+pip install -r requirements.txt
 ```
+
+## Sample data
+
+Sample data can be found
+[here](https://cloud.livingoptics.com/shared-resources?file=samples/enhanced-object-detection.zip)
 
 ## Usage
 
-### canned demo
+### Canned Demo
 
-YOLO detection using the live camera feed:
-
-```bash
-python enhanced-object-detection/object_detection_with spectral_filtering_file.py
-```
-
-For the face spoofing classes are added by clicking on YOLO generated ROI.
-
-### User inputs
-
-- filepath - enter the path to the dataset for which the NDVI should be calculated
-- calibration_folder - enter the path to the factory calibration folder for your camera
-- calibration_frame_path - enter the path to the field calibration frame
-
-### Live demos
-
-YOLO object detection plus spectral classification using the live camera feed:
+YOLO detection using a recorded LO file:
 
 ```bash
-python enhanced-object-detection/object_detection_with spectral_filtering_live.py
+python enhanced-object-detection/object_detection_with_spectral_filtering_file.py
 ```
 
-For the face spoofing classes are added by clicking on YOLO generated ROI.
+Apple types are assigned by clicking on the YOLO-generated ROI.
+
+### User Inputs
+
+- filepath – Path to the dataset (recorded video) for NDVI calculation.
+- calibration_folder – Path to the factory calibration folder.
+- calibration_frame_path – Path to the field calibration frame.
+
+### Live Demo
+
+YOLO object detection and spectral classification using a live camera feed:
+
+```bash
+python enhanced-object-detection/object_detection_with_spectral_filtering_live.py
+```
+
+Apple types are assigned by clicking on the YOLO-generated ROI.
+
+### User Inputs
+
+- calibration_folder – Path to the factory calibration folder.
+- calibration_frame_path – Path to the field calibration frame.
 
 ### Parameters
 

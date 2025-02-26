@@ -61,7 +61,7 @@ class PrincipalComponentAnalysisExample(BaseAnalysis):
             use_background (optional, bool): Whether or not to use background.
             Defaults to False.
             pca_dimension_min (int): The lowest PCA component to return in the overlay.
-            pca_dimesion_max (int): The highest PCA component to return in the overlay, when pca_dimension_min != pca_dimesion_max returns a sum of the components.
+            pca_dimension_max (int): The highest PCA component to return in the overlay, when pca_dimension_min != pca_dimension_max returns a sum of the components.
             fit_pca (bool): If True the PCA model is fitted to the incoming frame and then predictions are returned in the overlay. If False the last recorded PCA model is used to predict the current frame.
             truncate_outliers (bool) Whether outliers should be cropped
         """

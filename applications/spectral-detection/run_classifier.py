@@ -3,14 +3,14 @@
 
 import pickle
 import time
+
 import cv2
 import numpy as np
+from lo.sdk.api.acquisition.data.formats import LORAWtoRGB8
+from lo.sdk.api.acquisition.io.open import open as sdk_open
+from lo.sdk.helpers.import_numpy_or_cupy import xp
 from matplotlib import cm
 from sklearn.neighbors import KDTree
-
-from lo.sdk.api.acquisition.io.open import open as sdk_open
-from lo.sdk.api.acquisition.data.formats import LORAWtoRGB8
-from lo.sdk.helpers.import_numpy_or_cupy import xp
 
 
 def spectral_angle_nd_to_vec(spectral_list, reference_spectrum):
@@ -100,15 +100,22 @@ with sdk_open(file_path) as f:
         print(f"prediction time: {time.time() - stime}")
 
         # ------------------ PREPARE SCENE VIEW FOR DISPLAY ----------------------------
-        if debayer:
-            # The example file is bitshifted already
-            scene_view = scene_view * 16
-            scene_view = LORAWtoRGB8(scene_view)
-        else:
-            scene_view = np.stack(
-                [np.copy(scene_view), np.copy(scene_view), np.copy(scene_view)], axis=-1
-            ).squeeze()
-            scene_view = scene_view.astype(float) / 16
+        shp = np.shape(scene_view)
+
+        if shp[-1] != 3:  # If not already 3-channel RGB
+            if np.max(scene_view) > 2**12:
+                scene_view = scene_view >> 4
+            if np.max(scene_view) > 2**8:
+                fraction = 2**12 // 2**8
+                scene_view = scene_view / fraction
+
+            if debayer:
+                scene_view = LORAWtoRGB8(np.squeeze(scene_view))
+
+        scene_view = cv2.normalize(
+            scene_view, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U
+        )
+        scene_view = cv2.cvtColor(scene_view, cv2.COLOR_BGR2RGB)
 
         # ---------------- OVERLAY PREDICTIONS ON SCENE VIEW ---------------------------
         # Filter & Visualise predictions

@@ -2,7 +2,7 @@
 
 Python code examples showcasing the application of spectral information to computer vision tasks.
 
-These examples use the [Living Optics SDK](https://www.livingoptics.com/developer/).
+These examples use the [Living Optics SDK](https://www.cloud.livingoptics.com/shared-resources?file=software/lo_sdk-1.6.0-dist.tgz).
 
 - 📹 + 🌈 Experience the utility of video-rate spatial-spectral imaging combined with real-time analysis capabilities.
 - 🔧 + 👩‍💻 Access developer-friendly tools that integrate with computer vision workflows.
@@ -11,16 +11,15 @@ These examples use the [Living Optics SDK](https://www.livingoptics.com/develope
 ## Getting started
 
 - New to this repository? : Please read the [Getting started guide](https://developer.livingoptics.com/getting-started/)
-- Register to download the SDK and sample data [here](https://www.livingoptics.com/register-for-download-sdk/)
-- Registered as a user? Read the [documentation](https://docs.livingoptics.com/)
+- Register to download the SDK and sample data [here](https://www.cloud.livingoptics.com/register)
+- Registered as a user on the Subscription tier? Read the full [documentation](https://docs.livingoptics.com/)
 - Take me to the [examples](#examples)
-
 
 ## Resources
 
 - [Developer documentation](https://developer.livingoptics.com/)
 - [Developer resources](https://www.livingoptics.com/developer)
-- [Product documentation](https://docs.livingoptics.com/) for registered users.
+- [Product documentation](https://docs.livingoptics.com/) for registered users on the Subscription tier.
 
 ## Examples
 
@@ -42,17 +41,17 @@ Dimensionality reduction (Fruit bruise ID) | NDVI Spectral index (Plant health -
 
 ### Examples listing
 
-All examples require an install of the LO python SDK within a python virtual enviroment for details see the [install guide](https://docs.livingoptics.com/sdk/install-guide.html#custom-python-environment). 
+All examples require an install of the Living Optics SDK within a python virtual environment. For details see the [install guide](https://cloud.livingoptics.com/shared-resources?file=docs/ebooks/install-sdk.pdf).
 
-Note: this requires registration see [getting started](#getting-started) for details
+Note: this requires registration see [getting started](#getting-started) for details.
 
 Example | About | Data samples |
 :--------------------|:--------------------------------------|:-------|
 [Segmentation with Spectral Classification](https://github.com/livingoptics/spatial-spectral-ml/tree/main) | Example of spectral classifier trained on minimal data integrated into a semantic segmentation pipeline, enabling subclass recognition of objects beyond the capabilities of standard RGB data. | [data](https://huggingface.co/datasets/LivingOptics/hyperspectral-fruit)|
-[Spectral detection](./spectral-detection/README.md) | Example of how run a simple sklearn classifier on spectral data and visualise the result. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/spectral-detection.zip)|
-[Spectrally enhanced object detection](./enhanced-object-detection/README.md) | Example of how LO's spectral information and be used to improve object detectors such as YOLO and SSD. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/enhanced-object-detection.zip) |
-[Dimensionality reduction](./dimensionality-reduction/README.md) | Performing dimensionality reduction techniques such as PCA and LDA on spatial spectral data. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/bruised-apple.zip)|
-[NDVI spectral index](./NDVI/README.md) | Example of performing NDVI with irradiance using LO's SDK, this techique is typically used to assess plant health. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/NDVI.zip)|
+[Spectral detection](./applications/spectral-detection/README.md) | Example of how run a simple sklearn classifier on spectral data and visualise the result. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/spectral-detection.zip)|
+[Spectrally enhanced object detection](./applications/enhanced-object-detection/README.md) | Example of how LO's spectral information and be used to improve object detectors such as YOLO and SSD. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/enhanced-object-detection.zip) |
+[Dimensionality reduction](./applications/dimensionality-reduction/README.md) | Performing dimensionality reduction techniques such as PCA and LDA on spatial spectral data. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/bruised-apple.zip)|
+[NDVI spectral index](https://github.com/livingoptics/sdk-examples/blob/929cbe85edcf5119eab7632e626b71f86102ab11/src/python/examples/applications/NDVI_from_file.py) | Example of performing NDVI with irradiance using LO's SDK, this techique is typically used to assess plant health. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/NDVI.zip)|
 
 
 ## Analysis tool plugins

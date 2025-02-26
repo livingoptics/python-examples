@@ -28,7 +28,7 @@ class BandRatioAnalysisExample(BaseAnalysis):
         band_two_min: float = 700,
         band_two_max: float = 900
     ):
-        """Returns The band ratio between two wavelength bands. This is a generalisation of NDVI to arbitrary wavength bands.
+        """Returns The band ratio between two wavelength bands. This is a generalisation of NDVI to arbitrary wavelength bands.
         Args:
             loframe (Tuple): Decoded frame information from camera
             (encoded_frame_info, encoded_frame), (scene_frame_info, scene_frame)
