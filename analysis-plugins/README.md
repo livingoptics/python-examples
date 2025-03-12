@@ -2,7 +2,6 @@
 
 This section contains examples of analysis routines which are compatible with the PYQT based [analysis tool](https://docs.livingoptics.com/sdk/tools/analysis/tool-guide.html).
 
-
 ## Preview
 
 | Script                                             | Functionality                                    |
@@ -19,24 +18,25 @@ This section contains examples of analysis routines which are compatible with th
 
 ### Installation
 
-#### SDK
+### SDK
 1. You'll need to be first registered/logged in with our cloud service through [here](https://cloud.livingoptics.com/login)
-2. Then download the SDK Then visit [here](https://cloud.livingoptics.com/shared-resources?file=docs/ebooks/install-sdk.pdf) for instructions on how to install the SDK.
+2. Then download the SDK and visit [here](https://cloud.livingoptics.com/shared-resources?file=docs/ebooks/install-sdk.pdf) for instructions on how to install the SDK.
 
 ### To run
 
 In a terminal window, activate the SDK virtual environment.
+
 ```bash
 source bin activate venv
 ```
 
-Add directory path to PYTHONPATH
+- Add directory path to PYTHONPATH:
 
 ```bash
 export PYTHONPATH="${PYTHONPATH}:/PATH/TO/LOCATION/OF/ANALYSIS/ROUTINE"
 ```
 
-Then, as in the documentation, do
+Then run the `analysis` tool with the plugin:
 
 ```bash
 analysis 
@@ -54,6 +54,7 @@ analysis
 ```bash
 analysis --analysis single_band.SingleBandAnalysis --file /datastore/lo/share/samples/ndvi/NDVI-demo.loraw --calibration /datastore/lo/share/samples/ndvi/demo-calibration-ndvi
 ```
+> **Warning** the camera has fixed channel numbers and is therefore unable to differentiate arbitrary wavelengths to use as bands, despite the software plugin allowing user input like this. The software will display the closest channel to the chosen wavelength **only**.
 
 - Band ratio script
   - A band ratio is a simply a quotient of some select bands in a spectrum, which produces a single value for each spectral sample.
@@ -66,10 +67,12 @@ analysis --analysis single_band.SingleBandAnalysis --file /datastore/lo/share/sa
 analysis --analysis band_ratio.BandRatioAnalysisExample --file /datastore/lo/share/samples/bruised-apple/bruised-apple.loraw --calibration /datastore/lo/share/samples/bruised-apple/demo-calibration-bruised-apple
 ```
 
+> **Warning** the camera has fixed channel numbers and is therefore unable to differentiate arbitrary wavelengths to use as bands, despite the software plugin allowing user input like this. The software will display the closest channel to the chosen wavelength **only**.
+
 - Principal Component Analysis (PCA)
   - PCA is an algorithm for dimensionality reduction and is typically used for data preprocessing and exploration.
-  - High dimensional spectral data is re-projected into a coordinate space where the first few components capture the direction of 'greatest variance' within the dataset
-  - This analysis plugin allows you to display the channels one-by-one using an overlay on the image
+  - High dimensional spectral data is re-projected into a coordinate space where the first few components capture the direction of 'greatest variance' within the dataset.
+  - This analysis plugin allows you to display the channels one-by-one using an overlay on the image.
   - Dataset example can be downloaded from [here](https://cloud.livingoptics.com/shared-resources?file=samples/macbeth.zip)
 
 ```bash
@@ -77,7 +80,7 @@ analysis --analysis pca.PrincipalComponentAnalysisExample --file /datastore/lo/s
 ```
 
 - K-means Clustering
-  - K-means is an unsupervised learning method, where it assigns a each spectral datapoint to one of K classes
+  - K-means is an unsupervised learning method, where it assigns each spectral datapoint to one of K classes.
   - The user is able to choose the value of K. In this implementation it should be between 2-5.
   - The tool produces an overlay onto the image with the value of the label and the user can change the colour LUT by right-clicking on the colourbar to assign different colours to the classes.
   - Dataset example can be downloaded from [here](https://cloud.livingoptics.com/shared-resources?file=samples/macbeth.zip)
@@ -88,15 +91,15 @@ analysis --analysis kmeans.KMeansClustering --file /datastore/lo/share/samples/m
 ```
 
 - Mean-shift Clustering
-  - Mean shift clustering is another unsupervised learning algorithm. It is centroid based and the user does not need to choose the number of clusters.
-  - We can apply it to spectra to automatically group together 'similar' points
+  - Mean-shift clustering is another unsupervised learning algorithm. It is centroid based and the user does not need to choose the number of clusters.
+  - We can apply it to spectra to automatically group together 'similar' points.
   - Dataset example can be downloaded from [here](https://cloud.livingoptics.com/shared-resources?file=samples/macbeth.zip)
 
 ```bash
 analysis --analysis mean_shift.MeanShiftClusterer --file /datastore/lo/share/samples/macbeth/macbeth.loraw  --calibration /datastore/lo/share/samples/ndvi/demo-calibration-macbeth
 ```
 
-- Rx anomaly detection
+- RX anomaly detection
   - The Red-Xiaoli detection script compares the statistics of each spectral point with the background (the average of the entire image).
   - Assuming that the anomalous points are rare compared to the background, they will be highlighted via an overlay.
   - Dataset example can be downloaded from [here](https://cloud.livingoptics.com/shared-resources?file=samples/anomaly-detection.zip)
@@ -107,7 +110,7 @@ analysis --analysis rxd.RxAnomalyDetector --file /datastore/lo/share/samples/ano
 
 - MCARI (Modified Chlorophyll Absorption in Reflectance Index)
   - MCARI (Modified Chlorophyll Absorption in Reflectance Index) is calculated using green, red and near-infrared (NIR) wavelengths.
-  - Is used as a plant health measure and correlates well to chlorophyll content of leafs.
+  - Is used as a plant health measure and correlates well to chlorophyll content of leaves.
   - Dataset example can be downloaded from [here](https://cloud.livingoptics.com/shared-resources?file=samples/tree-with-blossoms.zip)
 
 ```bash

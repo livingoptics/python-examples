@@ -17,7 +17,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 # ------------------------HELPER FUNCTIONS----------------------------------
 def simple_bgr(spectra, wavelengths):
     """
-    Extracts BGR wavelength colors from the decoded spectra.
+    Extracts BGR wavelength colours from the decoded spectra.
     """
     rgb_idx = [np.argmin(np.abs(wavelengths - w)) for w in [475, 550, 625]]
     return spectra[:, rgb_idx]
@@ -25,7 +25,7 @@ def simple_bgr(spectra, wavelengths):
 
 def min_max_normalize(image, per_channel=False):
     """
-    Performs min-max normalization on an image.
+    Performs min-max normalisation on an image.
 
     Args:
         image (np.ndarray): Input image array of shape (H, W) or (H, W, C).
@@ -48,7 +48,7 @@ def main(args):
 
     # --------------------------- CALIBRATION ------------------------------------
     decoder = SpectralDecoder.from_calibration(
-        args.calibration_folder, args.calibration_frame_path
+        args.factory_calibration_folder, args.field_calibration_file
     )
 
     # --------------------------- UPSAMPLER ------------------------------------
@@ -63,7 +63,7 @@ def main(args):
     wavelengths = metadata.wavelengths
     dense_cube = upsampler(spectra)
 
-    # Generate BGR visualization
+    # Generate BGR visualisation
     bgr = simple_bgr(spectra, wavelengths)
     bgr_cube = upsampler(bgr) / np.max(upsampler(bgr))
 
@@ -150,20 +150,20 @@ if __name__ == "__main__":
         "--calibration-folder",
         type=str,
         required=True,
-        help="Path of the Calibration directory for given Living Optics Camera System.",
+        help="Path of the Factory Calibration directory for a given Living Optics Camera.",
     )
     parser.add_argument(
         "-cf",
         "--calibration-frame-path",
         type=str,
-        help="Path of the 600nm data file collected from Living Optics Camera System.",
+        help="Path of the field calibration file collected from Living Optics Camera System.",
     )
     parser.add_argument(
         "-f",
         "--filepath",
         type=str,
         required=True,
-        help="Path of the data file collected from Living Optics Camera System.",
+        help="Path of the data file collected from Living Optics Camera.",
     )
     parser.add_argument(
         "-at",

@@ -20,8 +20,8 @@ def percentile_norm(im: xp.ndarray, low: int = 1, high: int = 95) -> xp.ndarray:
 
     Args:
         im (xp.ndarray): The input image.
-        low (int): The lower percentile for normalization.
-        high (int): The higher percentile for normalization.
+        low (int): The lower percentile for normalisation.
+        high (int): The higher percentile for normalisation.
 
     Returns:
         xp.ndarray: The normalised image.
@@ -36,11 +36,11 @@ def percentile_norm(im: xp.ndarray, low: int = 1, high: int = 95) -> xp.ndarray:
 
 # ------------------------------ DATA FILEPATHS ------------------------------
 # Calibration location
-calibration_folder = "/datastore/lo/share/calibrations/latest_calibration"
+factory_calibration_folder = "/datastore/lo/share/calibrations/latest_calibration"
 # If you are running from workstation set this to None.
 
-# Field calibration frame
-calibration_frame_path = None
+# Field calibration file
+field_calibration_file = None
 
 # File to load - pass None to stream directly from the camera
 file = "/datastore/lo/share/data/single-potato-peel-flesh-thin-peel-20240924-142815-386193.lo"
@@ -59,8 +59,8 @@ scale_factor = 1
 detection_threshold = 0.45
 
 # -------------------------- CREATE DECODER -----------------------------------
-if calibration_folder is not None:
-    decoder = SpectralDecoder.from_calibration(calibration_folder, calibration_frame_path)
+if factory_calibration_folder is not None:
+    decoder = SpectralDecoder.from_calibration(factory_calibration_folder, field_calibration_file)
 
 
 # ------------------------- Setup Mask RCNN Model ----------------------------

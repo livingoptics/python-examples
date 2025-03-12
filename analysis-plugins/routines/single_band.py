@@ -1,6 +1,10 @@
 # This file is subject to the terms and conditions defined in file
 # `COPYING.md`, which is part of this source code package.
 
+# !!!!!!  WARNING   !!!!!! 
+# The camera has fixed channel numbers and is therefore unable to differentiate arbitrary wavelengths to use as bands, despite the software plugin allowing user input like this. The software will display the closest channel to the chosen wavelength **only**.
+# The software will display the closest channel to the chosen wavelength ONLY.
+
 import numpy as np
 
 from lo.sdk.api.acquisition.data.coordinates import NearestUpSample
@@ -20,7 +24,7 @@ class SingleBandAnalysis(BaseAnalysis):
             loframe (Tuple): Decoded frame information from camera
             (encoded_frame_info, encoded_frame), (scene_frame_info, scene_frame)
             wavelength_min (float): the lowest wavelength
-            wavelength_max (float): The highest wavelength, When wavelength_min and wavelength_max are equal will return the nearest wavelength channel based on the channel midpoint wavelength.
+            wavelength_max (float): The highest wavelength. When wavelength_min and wavelength_max are equal will return the nearest wavelength channel based on the channel midpoint wavelength.
             truncate_outliers (bool) Whether outliers should be cropped
         """
         metadata, preview, spectra = loframe

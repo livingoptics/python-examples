@@ -9,7 +9,7 @@ Visit [here](https://docs.livingoptics.com/sdk/install-guide.html) for instructi
 
 ### Jupyter
 
-For further detail on jupyter notebook installations visit [jupyter website](https://jupyter.org/install)
+For further detail on jupyter notebook installations, visit [jupyter website](https://jupyter.org/install).
 
 ```bash
 SDK_PATH = 'PATH/TO/SDK'
@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ## Examples and tutorials listing
 
-To retrieve some sample data to explore navigate to the [LO cloud](https://docs.livingoptics.com/install-guide.html) and download the sample sample which interests you.
+Download sample data from the [Living Optics cloud portal](https://cloud.livingoptics.com/shared-resources?file=samples/spectral-detection.zip).
 
 Example | Jupyter Notebook | data|
 :--------------------|:--------------------------------------|-------|

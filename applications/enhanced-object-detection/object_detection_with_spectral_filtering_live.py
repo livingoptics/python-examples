@@ -25,11 +25,12 @@ from lo.sdk.integrations.yolo.helpers import (get_from_huggingface_model,
                                               select_location_cv2_callback)
 
 # ------------------------------ DATA FILEPATHS ------------------------------
-# Calibration location
-calibration_folder = "/datastore/lo/share/calibrations/latest_calibration"
+# Factory Calibration location
+factory_calibration_folder = "/datastore/lo/share/calibrations/latest_calibration"
 
-# Field calibration frame
-calibration_frame_path = None
+# Field calibration file
+# Needs to be taken manually using GUI and the path provided here
+field_calibration_file = None
 
 # ------------------------------ USER PARAMETERS ------------------------------
 # Set to True to run in multiclass mode
@@ -58,7 +59,7 @@ debug = False
 model = get_from_huggingface_model("Ultralytics/YOLOv8", "yolov8s.pt")
 
 # -------------------------- CREATE DECODER --------------------=--------------
-decoder = SpectralDecoder.from_calibration(calibration_folder, calibration_frame_path)
+decoder = SpectralDecoder.from_calibration(factory_calibration_folder, field_calibration_file)
 
 params = {"click_location": None}
 
@@ -67,7 +68,7 @@ target_mean_spectra = None
 
 with LOCamera() as cam:
 
-    # set sensor settings
+    # Example sensor settings - set according to your environment
     cam.frame_rate = 10000000
     cam.gain = 100
     cam.exposure = 633333
@@ -86,6 +87,8 @@ with LOCamera() as cam:
                     scene = scene / fraction
                 debayered = _debayer(np.squeeze(scene), info=None)
                 scene_frame = np.asarray(debayered)
+            else:
+                scene_frame = scene
             scene_frame = cv2.normalize(
                 scene_frame, None, 0, 255, cv2.NORM_MINMAX, dtype=cv2.CV_8U
             )

@@ -14,14 +14,14 @@ from lo.sdk.helpers.path import getdatastorepath
 # Setup
 
 
-CALIBRATION_FOLDER_DIR = os.path.join(getdatastorepath(), "lo", "share", "samples", "face-spoofing", "demo-calibration-face-spoofing")
+factory_calibration_folder_DIR = os.path.join(getdatastorepath(), "lo", "share", "samples", "face-spoofing", "demo-calibration-face-spoofing")
 PATH_TO_OUTPUT_FILE = os.path.join(os.path.dirname(__file__), "..", "..", "temp", "stream_to_file.lo")
 os.makedirs(os.path.dirname(PATH_TO_OUTPUT_FILE), exist_ok=True)
 
 NO_FRAMES_TO_CAPTURE = 10
 
 # Instantiate the LO's spectral decoder
-decoder = SpectralDecoder.from_calibration(CALIBRATION_FOLDER_DIR)
+decoder = SpectralDecoder.from_calibration(factory_calibration_folder_DIR)
 
 
 # We instantiate a decoder object using the `SpectralDecoder` api with the calibration folder for your LO camera.

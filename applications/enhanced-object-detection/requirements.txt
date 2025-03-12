@@ -1,5 +1,0 @@
-opencv-python
-pathlib
-huggingface_hub
-ultralytics
-torch

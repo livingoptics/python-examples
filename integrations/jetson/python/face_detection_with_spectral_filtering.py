@@ -30,14 +30,14 @@ PATH_TO_LO_RAW_FILE = os.path.join(
     "face-spoof-demo.lo-raw"
 )
 
-CALIBRATION_FOLDER_DIR = os.path.join(getdatastorepath(), "lo", "share", "samples", "face-spoofing", "demo-calibration-face-spoofing")
+factory_calibration_folder_DIR = os.path.join(getdatastorepath(), "lo", "share", "samples", "face-spoofing", "demo-calibration-face-spoofing")
 SPECTRA_JSON_PATH = os.path.join(os.path.dirname(__file__), "..", "assets", "real_face_spectra.json")
 
 # Define facenet detector
 net = jetson_inference.detectNet("facenet", threshold=0.001)
 
 # Instantiate the spectral decoder
-decoder = SpectralDecoder.from_calibration(CALIBRATION_FOLDER_DIR)
+decoder = SpectralDecoder.from_calibration(factory_calibration_folder_DIR)
 
 # Load target spectra
 with open(SPECTRA_JSON_PATH) as f:

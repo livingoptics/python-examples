@@ -26,13 +26,13 @@ from lo.sdk.integrations.yolo.helpers import (get_from_huggingface_model,
 # File to view
 filepath = "/datastore/lo/share/samples/enhanced-object-detection/apple-detection.lo"
 
-# Calibration location
-calibration_folder = (
-    "/datastore/lo/share/samples/enhanced-object-detection/latest_calibration"
-)
+# Factory Calibration location
+# Provide a path if using a .loraw file
+factory_calibration_folder = None
 
-# Field calibration frame
-calibration_frame_path = None
+# Field calibration file location
+# Provide a path if using a .loraw file
+field_calibration_file = None
 
 # ------------------------------ USER PARAMETERS ------------------------------
 # Set to True to run in multiclass mode
@@ -62,9 +62,9 @@ model = get_from_huggingface_model("Ultralytics/YOLOv8", "yolov8s.pt")
 
 # --------------------------- CALIBRATION ------------------------------------
 decode = None
-if calibration_folder is not None:
+if factory_calibration_folder is not None:
     decode = SpectralDecoder.from_calibration(
-        calibration_folder, calibration_frame_path
+        factory_calibration_folder, field_calibration_file
     )
 
 params = {"click_location": None}

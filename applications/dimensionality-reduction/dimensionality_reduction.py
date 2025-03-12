@@ -16,18 +16,22 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 # File to view
 filepath = "/datastore/lo/share/samples/bruised-apple/bruised-apple.loraw"
 
-# Calibration location
-calibration_folder = "/datastore/lo/share/samples/bruised-apple/demo-calibration"
+# Factory Calibration location
+# Provide a path if using a .loraw file
+factory_calibration_folder = (
+    "/datastore/lo/share/samples/bruised-apple/demo-calibration"
+)
 
-# Field calibration frame
-calibration_frame_path = None
+# Field calibration file
+# Provide a path if using a .loraw file
+field_calibration_file = None
 
 # ----------------------------- USER INPUTS ----------------------------------
 # Frame to perform analysis on
 frame_idx = 0
 
 # The analysis type to run. Must be one of:
-#   "PCA" = Principle Components Analysis (PCA)
+#   "PCA" = Principle Component Analysis (PCA)
 #   "MNF" = Minimum Noise Fraction (MNF)
 #   "LDA" = Linear Discriminant Analysis (LDA)
 analysis_type = "PCA"
@@ -35,7 +39,7 @@ analysis_type = "PCA"
 print("Initializing...")
 
 # --------------------------- CALIBRATION ------------------------------------
-decoder = SpectralDecoder.from_calibration(calibration_folder, calibration_frame_path)
+decode = SpectralDecoder.from_calibration(factory_calibration_folder, field_calibration_file)
 
 # --------------------------- UPSAMPLER ------------------------------------
 # Instantiate an upsampler to convert from spectral list to an array in the scene view coordinates
@@ -53,7 +57,7 @@ def simple_bgr(spectra, wavelengths):
 
 def min_max_normalize(image, per_channel=False):
     """
-    Performs min-max normalization on an image.
+    Performs min-max normalisation on an image.
 
     Args:
         image (np.ndarray): Input image array of shape (H, W) or (H, W, C).

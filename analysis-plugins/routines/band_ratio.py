@@ -1,6 +1,11 @@
 # This file is subject to the terms and conditions defined in file
 # `COPYING.md`, which is part of this source code package.
 
+# !!!!!!  WARNING   !!!!!! 
+# The camera has fixed channel numbers and is therefore unable to differentiate arbitrary wavelengths to use as bands, despite the software plugin allowing user input like this. 
+# The software will display the closest channel to the chosen wavelength ONLY.
+
+
 import numpy as np
 
 from lo.sdk.api.acquisition.data.coordinates import NearestUpSample

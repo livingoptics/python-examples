@@ -15,9 +15,9 @@ def percentile_norm(im: xp.ndarray, low: int = 1, high: int = 95) -> xp.ndarray:
     Normalise the image based on percentile values.
 
     Args:
-        im (xp.ndarray): The ixput image.
-        low (int): The lower percentile for normalization.
-        high (int): The higher percentile for normalization.
+        im (xp.ndarray): The input image.
+        low (int): The lower percentile for normalisation.
+        high (int): The higher percentile for normalisation.
 
     Returns:
         xp.ndarray: The normalised image.
@@ -33,11 +33,11 @@ def percentile_norm(im: xp.ndarray, low: int = 1, high: int = 95) -> xp.ndarray:
 
 # ------------------------------ DATA FILEPATHS ------------------------------
 # Calibration location
-calibration_folder = "/datastore/lo/share/calibrations/latest_calibration"
+factory_calibration_folder = "/datastore/lo/share/calibrations/latest_calibration"
 # If you are running from workstation set this to None.
 
-# Field calibration frame
-calibration_frame_path = None
+# Field calibration file
+field_calibration_file = None
 
 # File to load - pass None to stream directly from the camera
 file = (
@@ -51,8 +51,8 @@ else:
     video_name = "output"
 
 # -------------------------- CREATE DECODER -----------------------------------
-if calibration_folder is not None:
-    decoder = SpectralDecoder.from_calibration(calibration_folder, calibration_frame_path)
+if factory_calibration_folder is not None:
+    decoder = SpectralDecoder.from_calibration(factory_calibration_folder, field_calibration_file)
 
 
 # ------------------------- Setup output location ----------------------------
@@ -78,11 +78,10 @@ recorder = cv2.VideoWriter(
     (shape[1], shape[0]),
 )
 
-
 frame_number = 0
 with LOCamera(file=lo_file) as cam:
 
-    # set sensor settings
+    # When loading from a file, using the LOCamera method requires the sensor settings to be given. 
     cam.frame_rate = fps * 1e6
     cam.gain = 100
     cam.exposure = 633333
