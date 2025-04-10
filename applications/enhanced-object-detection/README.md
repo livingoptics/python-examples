@@ -20,13 +20,13 @@ pip install -r eod-requirements.txt
 ## Sample data
 
 Sample data can be found
-[here](https://cloud.livingoptics.com/shared-resources?file=samples/enhanced-object-detection.zip)
+[here](https://cloud.livingoptics.com/shared-resources?file=samples_v2/enhanced-object-detection.zip)
 
 ## Usage
 
-### Canned Demo
+### Demo from file
 
-YOLO detection using a recorded LO file:
+YOLO detection using a recorded `.lo` file:
 
 ```bash
 python ./object_detection_with_spectral_filtering_file.py
@@ -37,10 +37,8 @@ To run the spectral filtering demo, click on the top-left apple in the frame. Th
 ### User Inputs
 
 - filepath - enter the path to the dataset for which the NDVI should be calculated
-- factory_calibration_folder - enter the path to the factory calibration folder for your camera
-- field_calibration_file - enter the path to the field calibration file
 
-### Live Demo
+### Live Demo - for testing with a Living Optics Camera
 
 YOLO object detection and spectral classification using a live camera feed:
 

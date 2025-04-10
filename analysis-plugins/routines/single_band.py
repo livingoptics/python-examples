@@ -9,6 +9,7 @@ import numpy as np
 
 from lo.sdk.api.acquisition.data.coordinates import NearestUpSample
 from lo.sdk.tools.analysis.apps import BaseAnalysis
+from lo.sdk.tools.webcamera.utils.color_map import get_linear_cts_legend
 
 
 class SingleBandAnalysis(BaseAnalysis):
@@ -17,8 +18,13 @@ class SingleBandAnalysis(BaseAnalysis):
         self.upsampler = NearestUpSample(output_shape=(1920, 1920), origin=(64, 256))
 
     def __call__(
-        self, loframe, wavelength_min: float = 440, wavelength_max: float = 460, truncate_outliers: bool = True
-    ):
+        self,
+        loframe,
+        wavelength_min: float = 440,
+        wavelength_max: float = 460,
+        truncate_outliers: bool = True,
+        **kwargs,
+    ) -> tuple:
         """Returns the sum of intensity for a given wavelength band
         Args:
             loframe (Tuple): Decoded frame information from camera
@@ -49,5 +55,6 @@ class SingleBandAnalysis(BaseAnalysis):
             (preview.shape[0] - map.shape[0]) // 2,
             (preview.shape[1] - map.shape[1]) // 2,
         )
-        map = np.pad(map, ((padding[0], padding[0]), (padding[1], padding[1])))
-        return loframe, map
+        single_band_map = np.pad(map, ((padding[0], padding[0]), (padding[1], padding[1])))
+
+        return None, single_band_map, get_linear_cts_legend(441.0, 898.2)

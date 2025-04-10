@@ -14,17 +14,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 
 # ------------------------------ DATA FILEPATHS ------------------------------
 # File to view
-filepath = "/datastore/lo/share/samples/bruised-apple/bruised-apple.loraw"
-
-# Factory Calibration location
-# Provide a path if using a .loraw file
-factory_calibration_folder = (
-    "/datastore/lo/share/samples/bruised-apple/demo-calibration"
-)
-
-# Field calibration file
-# Provide a path if using a .loraw file
-field_calibration_file = None
+filepath = "/datastore/lo/share/samples_v2/macbeth/macbeth.lo"
 
 # ----------------------------- USER INPUTS ----------------------------------
 # Frame to perform analysis on
@@ -36,20 +26,15 @@ frame_idx = 0
 #   "LDA" = Linear Discriminant Analysis (LDA)
 analysis_type = "PCA"
 
-print("Initializing...")
+print("Initialising...")
 
 # --------------------------- CALIBRATION ------------------------------------
-decode = SpectralDecoder.from_calibration(factory_calibration_folder, field_calibration_file)
-
-# --------------------------- UPSAMPLER ------------------------------------
-# Instantiate an upsampler to convert from spectral list to an array in the scene view coordinates
-upsampler = NearestUpSample(decoder.sampling_coordinates, scale=1 / 3)
-
+#decoder = SpectralDecoder.from_calibration(factory_calibration_folder, field_calibration_file)
 
 # ------------------------HELPER FUNCTIONS----------------------------------
 def simple_bgr(spectra, wavelengths):
     """
-    Extracts BGR wavelength colors from the decoded spectra.
+    Extracts BGR wavelength colours from the decoded spectra.
     """
     rgb_idx = [np.argmin(np.abs(wavelengths - w)) for w in [475, 550, 625]]
     return spectra[:, rgb_idx]
@@ -79,8 +64,13 @@ def min_max_normalize(image, per_channel=False):
 file = sdkopen(filepath)
 file.seek(frame_idx)
 frame = file.read()
-metadata, scene, spectra = decoder(frame, LORAWtoRGB8)
+metadata, scene, spectra = frame
 wavelengths = metadata.wavelengths
+
+# --------------------------- UPSAMPLER ------------------------------------
+# Instantiate an upsampler to convert from spectral list to an array in the scene view coordinates
+upsampler = NearestUpSample(metadata.sampling_coordinates, scale=1 / 3)
+
 dense_cube = upsampler(spectra)
 
 # Generate BGR visualization
@@ -124,7 +114,7 @@ elif analysis_type == "MNF":
 
 elif analysis_type == "LDA":
     print("Performing LDA...")
-    mk = cv2.selectROI("Select the area of suspected bruise", bgr_cube)
+    mk = cv2.selectROI("Select an area of interest", bgr_cube)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 

@@ -28,24 +28,19 @@ For more details on an example, click on any of the images or GIFs below. Full l
 
 Spectral detection | Spectrally enhanced object detection |
 :------------: |  :----------: |
-[![spectral detection](./applications/spectral-detection/media/liquid-classification.gif)](./applications/spectral-detection/README.md)  | [![apples](./applications/enhanced-object-detection/media/plastic-apple-id.gif)](./applications/enhanced-object-detection/README.md)  |
-
-Dimensionality reduction (Fruit bruise ID) | NDVI Spectral index (Plant health - NDVI) |
-:------------: |  :----------: |
-[![Dim_reduction](./applications/dimensionality-reduction/media/fruit-bruising.gif)](./applications/dimensionality-reduction/README.md)  | [![NDVI](./applications/NDVI/media/ndvi.gif)](https://github.com/livingoptics/sdk-examples/blob/929cbe85edcf5119eab7632e626b71f86102ab11/src/python/examples/applications/NDVI_from_file.py) |
-
-
-| Spectrally enhanced object idenfication and segmentation |
-| :------------: |
-[![segmentation-and-spectral-classification](./applications/media/fruit-recoginition-spectra-apples.gif)](https://github.com/livingoptics/spatial-spectral-ml/tree/main) |
+[![Spectral Detection](./applications/spectral-detection/media/liquid-classification.gif)](./applications/spectral-detection/README.md)  | [![apples](./applications/enhanced-object-detection/media/plastic-apple-id.gif)](./applications/enhanced-object-detection/README.md) |
+| NDVI Spectral index (Plant health - NDVI) | Segmentation with Spectral Classification |
+[![NDVI](./applications/NDVI/media/ndvi.gif)](https://github.com/livingoptics/sdk-examples/blob/929cbe85edcf5119eab7632e626b71f86102ab11/src/python/examples/applications/NDVI_from_file.py) | [![Segmentation with Spectral Classification](./applications/media/fruit-recoginition-spectra-apples.gif)](https://github.com/livingoptics/spatial-spectral-ml/tree/main) |
+| Dimensionality Reduction |
+[![Dimensionality Reduction](./applications/dimensionality-reduction/media/dimensionality-reduction.gif)](./applications/dimensionality-reduction/README.md) |
 
 Example | About | Data samples |
 :--------------------|:--------------------------------------|:-------|
-[Spectral detection](./applications/spectral-detection/README.md) | Example of how run a simple sklearn classifier on spectral data and visualise the result. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/spectral-detection.zip)|
+[Spectral detection](./applications/spectral-detection/README.md) | Example of how run a simple sklearn classifier on spectral data and visualise the result. | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/spectral-detection.zip)|
+[Spectrally enhanced object detection](./applications/enhanced-object-detection/README.md) | Example of how Living Optics spectral information can be used to improve object detectors such as YOLO and SSD. | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/enhanced-object-detection.zip) |
+[NDVI spectral index](https://github.com/livingoptics/sdk-examples/blob/929cbe85edcf5119eab7632e626b71f86102ab11/src/python/examples/applications/NDVI_from_file.py) | Example of performing NDVI with irradiance using the Living Optics SDK, this technique is typically used to assess plant health. | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/getting-started-analysis.zip)|
 [Segmentation with Spectral Classification](https://github.com/livingoptics/spatial-spectral-ml/tree/main) | Example of spectral classifier trained on minimal data integrated into a semantic segmentation pipeline, enabling subclass recognition of objects beyond the capabilities of standard RGB data. | [data](https://huggingface.co/datasets/LivingOptics/hyperspectral-fruit)|
-[Dimensionality reduction](./applications/dimensionality-reduction/README.md) | Performing dimensionality reduction techniques such as PCA and LDA on spatial spectral data. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/bruised-apple.zip)|
-[NDVI spectral index](https://github.com/livingoptics/sdk-examples/blob/929cbe85edcf5119eab7632e626b71f86102ab11/src/python/examples/applications/NDVI_from_file.py) | Example of performing NDVI with irradiance using the Living Optics SDK, this technique is typically used to assess plant health. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/NDVI.zip)|
-[Spectrally enhanced object detection](./applications/enhanced-object-detection/README.md) | Example of how Living Optics spectral information can be used to improve object detectors such as YOLO and SSD. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/enhanced-object-detection.zip) |
+[Dimensionality Reduction](./applications/dimensionality-reduction/README.md) | Performing dimensionality reduction techniques such as PCA and LDA on spatial spectral data. | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/macbeth.zip) |
 
 ## Analysis tool plugins
 
@@ -59,13 +54,13 @@ The [analysis tool](https://docs.livingoptics.com/sdk/tools/analysis/tool-guide.
 
 Routine | About | Data samples |
 :-------------------------|:----------------------|:-------------|
-| [Single band](./analysis-plugins/routines/single_band.py)  | The intensity of a wavelength (nearest) or range of wavelengths. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/ndvi.zip) |
-| [Band ratio](./analysis-plugins/routines/band_ratio.py)  | A band ratio is a simply a quotient of select bands in a spectrum, which produces a single value for each spectral sample. Different band ratios allows the extraction of different properties. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/bruised-apple.zip) |
-| [Principal Component Analysis](./analysis-plugins/routines/pca.py) | PCA is an algorithm for dimensionality reduction and is typically used for data preprocessing and exploration. This analysis plugin allows you to display the components one-by-one using an overlay on the image. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/macbeth.zip) |
-| [K-means Clustering](./analysis-plugins/routines/kmeans.py) |  K-means is an unsupervised learning algorithm, where it assigns a spectral datapoint to one of K classes. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/macbeth.zip) | 
-| [Mean-shift clustering](./analysis-plugins/routines/mean_shift.py) | Mean shift clustering is another unsupervised learning algorithm. It is centroid based and the user does not need to choose the number of clusters. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/macbeth.zip) |
-| [Anomaly detection](./analysis-plugins/routines/rxd.py) | The Red-Xiaoli detection script compares the statistics of each spectral point with the background (the average of the entire image). | [data](https://cloud.livingoptics.com/shared-resources?file=samples/anomaly-detection.zip) | 
-| [MCARI](./analysis-plugins/routines/mcari.py) | MCARI (Modified Chlorophyll Absorption in Reflectance Index) is calculated using green, red and near-infrared (NIR) wavelengths. | [data](https://cloud.livingoptics.com/shared-resources?file=samples/tree-with-blossoms.zip) |
+| [Single band](./analysis-plugins/routines/single_band.py)  | The intensity of a wavelength (nearest) or range of wavelengths. | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/macbeth.zip) |
+| [Band ratio](./analysis-plugins/routines/band_ratio.py)  | A band ratio is a simply a quotient of select bands in a spectrum, which produces a single value for each spectral sample. Different band ratios allows the extraction of different properties. | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/macbeth.zip) |
+| [Principal Component Analysis](./analysis-plugins/routines/pca.py) | PCA is an algorithm for dimensionality reduction and is typically used for data preprocessing and exploration. This analysis plugin allows you to display the components one-by-one using an overlay on the image. | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/macbeth.zip) |
+| [K-means Clustering](./analysis-plugins/routines/kmeans.py) |  K-means is an unsupervised learning algorithm, where it assigns a spectral datapoint to one of K classes. | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/macbeth.zip) | 
+| [Mean-shift clustering](./analysis-plugins/routines/mean_shift.py) | Mean shift clustering is another unsupervised learning algorithm. It is centroid based and the user does not need to choose the number of clusters. | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/macbeth.zip) |
+| [Anomaly detection](./analysis-plugins/routines/rxd.py) | The Red-Xiaoli detection script compares the statistics of each spectral point with the background (the average of the entire image). | No data | 
+
 
 ## Integrations with third parties:
 
@@ -76,7 +71,7 @@ Routine | About |
 
 ## Scripts and processing examples:
 
-Script | About | Prerequisists |
+Script | About | Prerequisites |
 :-------------------------|:----------------------|:-----|
 |[Convert lo format scene view to mp4](./scripts/lo_to_mp4.py) | This script converts a `.lo` data stream to an mp4 video | [opencv-python](https://pypi.org/project/opencv-python/) |
 |[Run maskrcnn model with lo stream](./scripts/lo_with_maskrcnn.py) | This script runs an off-the-shelf maskrcnn model on the `.lo` data stream, with the required preprocessing |  [opencv-python](https://pypi.org/project/opencv-python/) <br> [torch](https://pypi.org/project/torch/) <br> [torchvision](https://pypi.org/project/torchvision/) |

@@ -3,7 +3,7 @@
 This contains integrations of popular jetson libaries with the Living Optics camera.
 
 ## Installation
-aaaa
+
 ### SDK
 
 Visit [here](https://docs.livingoptics.com/sdk/install-guide.html) for instructions on how to install the SDK.
@@ -33,15 +33,14 @@ For more details on each example, click on any of the images or GIFs below.
 
 Stream from camera | Stream to file decoded |
 :------------: |  :----------: |
-[![Stream from camera](./media/face_spoof.gif)](./notebooks/stream.ipynb)  | [![Stream to file decoded](./media/scene_with_spectra.gif)](./notebooks/stream_to_file_decoded.ipynb)  |
+![Stream from camera](./media/face_spoof.gif) | ![Stream to file decoded](./media/scene_with_spectra.gif)  |
 
 Face detection | Face detection with Spectral filtering |
 :------------: |  :----------: |
-[![Face detection](./media/face_spoof_tracking.gif)](./notebooks/face_detection.ipynb)  | [![Face detection with Spectral filtering](./media/face_spoof_tracking_with_spectral_filtering.gif)](./notebooks/face_detection_with_spectral_filtering.ipynb)  |
+[![Face detection](./media/face_spoof_tracking.gif)](../jupyter/notebooks/face_detection.ipynb) | [![Face detection with Spectral filtering](./media/face_spoof_tracking_with_spectral_filtering.gif)](../jupyter/notebooks/face_detection_with_spectral_filtering.ipynb) |
 
 Example | Python script |
 :--------------------|:-------|
 Stream from camera | - |
-Stream to file decoded | [Script](python/stream_to_file_decoded.py) |
 Face detection using jetson-inference | [Script](python/face_detection.py) |
 Face detection with Spectral filtering using jetson-inference | [Script](python/face_detection_with_spectral_filtering.py) |

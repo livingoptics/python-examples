@@ -41,7 +41,7 @@ field_calibration_file = None
 
 # File to load - pass None to stream directly from the camera
 file = (
-    "/datastore/lo/share/data/single-potato-peel-flesh-thin-peel-20240924-142815-386193.lo"
+    "/datastore/lo/share/data/path-to-file.lo"
 )
 if file:
     lo_file = lo_open(file, "r")

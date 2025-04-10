@@ -9,9 +9,9 @@ data. The following techniques are implemented:
 
 ## Preview
 
-This preview shows how PCA can used to identify buising in apples.
+This preview shows how PCA can used to identify different clusters on a macbeth chart.
 
-<img src="./media/fruit-bruising.gif" height="300px"/>
+<img src="./media/dimensionality-reduction.gif" height="300px"/>
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ This preview shows how PCA can used to identify buising in apples.
 ## Sample data
 
 Sample data can be found
-[here](https://cloud.livingoptics.com/shared-resources?file=samples/bruised-apple.zip)
+[here](https://cloud.livingoptics.com/shared-resources?file=samples_v2/macbeth.zip)
 
 ## Usage
 
@@ -37,11 +37,9 @@ python dimensionality_reduction.py
 
 ### User inputs
 
-- filepath - enter the path to the `.loraw` file
-- factory_calibration_folder - enter the path to the factory calibration folder for your camera
-- field_calibration_file - enter the path to the Field calibration file if required
-- frame_idx - selects the frame from an `.loraw` file
-- analysis_type - selects the analysis to run
+- filepath - enter the path to the `.lo` file
+- frame_idx - selects the frame from an `.lo` file
+- analysis_type - selects the analysis routine to run
 
 Analysis is one of:
 
@@ -52,25 +50,25 @@ Analysis is one of:
 ### CLI usage
 
 ```bash
-python dimensionality_reduction_cli.py --calibration-folder /path/to/factory/calibration/folder --filepath /path/to/loraw/file/data.loraw --calibration-frame-path /path/to/field-calibration --analysis-type 1
+python dimensionality_reduction_cli.py --filepath /path/to/lo/file/data.lo --analysis-type 1
 ```
 
-### Example PCA analysis of bruised apples:
+### Example PCA analysis:
 
 ```bash
-python dimensionality_reduction_cli.py -c /datastore/lo/share/samples/bruised-apple/demo-calibration -f /datastore/lo/share/samples/bruised-apple/bruised-apple.loraw
+python dimensionality_reduction_cli.py -f /datastore/lo/share/samples_v2/macbeth/
 ```
 
 ### Example for PCA Analysis on frame 0
 
 ```bash
-python dimensionality_reduction_cli.py --calibration-folder /datastore/lo/share/samples/bruised-apple/demo-calibration --filepath /datastore/lo/share/samples/bruised-apple/bruised-apple.loraw -at=PCA --frame-index 0
+python dimensionality_reduction_cli.py --filepath /datastore/lo/share/samples_v2/macbeth -at=PCA --frame-index 0
 ```
 
 ### Example for LDA Analysis on frame 3 in the data file
 
 ```bash
-python dimensionality_reduction_cli.py -c /datastore/lo/share/samples/bruised-apple/demo-calibration -f /datastore/lo/share/samples/bruised-apple/bruised-apple.loraw -at LDA -i 3
+python dimensionality_reduction_cli.py -f /datastore/lo/share/samples_v2/macbeth/ -at LDA -i 3
 ```
 
 ### CLI tips

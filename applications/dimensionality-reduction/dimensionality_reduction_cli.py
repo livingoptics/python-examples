@@ -44,7 +44,7 @@ def min_max_normalize(image, per_channel=False):
 
 
 def main(args):
-    print("Initializing...")
+    print("Initialising...")
 
     # --------------------------- CALIBRATION ------------------------------------
     decoder = SpectralDecoder.from_calibration(
@@ -105,7 +105,7 @@ def main(args):
 
     elif args.analysis_type == "LDA":
         print("Performing LDA...")
-        mk = cv2.selectROI("Select the area of suspected bruise", bgr_cube)
+        mk = cv2.selectROI("Select an area of interest", bgr_cube)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
@@ -150,13 +150,13 @@ if __name__ == "__main__":
         "--calibration-folder",
         type=str,
         required=True,
-        help="Path of the Factory Calibration directory for a given Living Optics Camera.",
+        help="Path of the Factory Calibration directory for the Living Optics Camera.",
     )
     parser.add_argument(
         "-cf",
         "--calibration-frame-path",
         type=str,
-        help="Path of the field calibration file collected from Living Optics Camera System.",
+        help="Path of the field calibration file collected from the Living Optics Camera.",
     )
     parser.add_argument(
         "-f",

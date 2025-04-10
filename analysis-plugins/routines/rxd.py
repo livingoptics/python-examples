@@ -5,6 +5,7 @@ import numpy as np
 
 from lo.sdk.api.acquisition.data.coordinates import NearestUpSample
 from lo.sdk.tools.analysis.apps import BaseAnalysis
+from lo.sdk.tools.webcamera.utils.color_map import get_linear_cts_legend
 
 def calculate_rxd(spectra):
     """
@@ -45,14 +46,14 @@ class RxAnomalyDetector(BaseAnalysis):
         metadata, preview, spectra = loframe
 
         rgb_map = calculate_rxd(spectra)
-        overlay = self.upsampler(rgb_map, sampling_coordinates=metadata.sampling_coordinates)
+        map = self.upsampler(rgb_map, sampling_coordinates=metadata.sampling_coordinates)
 
         padding = (
-            (preview.shape[0] - overlay.shape[0]) // 2,
-            (preview.shape[1] - overlay.shape[1]) // 2,
+            (preview.shape[0] - map.shape[0]) // 2,
+            (preview.shape[1] - map.shape[1]) // 2,
         )
-        overlay = np.pad(overlay, ((padding[0], padding[0]), (padding[1], padding[1])))
-        overlay = np.float32(
-            ((overlay - overlay.min()) / (overlay.max() - overlay.min())) * 1
+        map = np.pad(map, ((padding[0], padding[0]), (padding[1], padding[1])))
+        rxd_map = np.float32(
+            ((map - map.min()) / (map.max() - map.min())) * 1
         )
-        return loframe, overlay
+        return None, rxd_map, get_linear_cts_legend(-1, 1)

@@ -17,16 +17,15 @@ PATH_TO_LO_RAW_FILE = os.path.join(
     getdatastorepath(),
     "lo",
     "share",
-    "samples",
+    "samples_v2",
     "face-spoofing",
-    "face-spoof-demo.lo-raw"
+    "face-spoof-demo.loraw"
 )
 
 # Define facenet detector
 net = jetson_inference.detectNet("facenet", threshold=0.01)
 
 RESIZE_FACTOR = 0.5
-
 
 # - We instantiate jetson-inference's detectNet with the facenet model
 
@@ -67,7 +66,7 @@ with lo_open(PATH_TO_LO_RAW_FILE) as f:
 cv2.destroyAllWindows()
 
 
-# - Instantiate LO's `open` context with the path to the `.loraw` file.
+# - Instantiate the `open` context with the path to the `.loraw` file.
 # - Convert to RGB8 using `LORAWtoRGB8` then to BGR for OpenCV's format.
 # - Run the detection using jetson-inference.
 # - Render the scene with detection overlays. 

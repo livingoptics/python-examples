@@ -114,7 +114,7 @@ def _debayer(frame, info, is_low_res=False):
 
 class DetectionAnalysis(BaseAnalysis):
     """
-    This class can be used stand alone but was designed to work with the LO analysis tool.
+    This class can be used stand alone but was designed to work with the Living Optics SDK GUI analysis tool.
 
     This show an example of how a simple KNN classifier, can be used to identify objects and substances with Living Optics spatial spectral information.
 

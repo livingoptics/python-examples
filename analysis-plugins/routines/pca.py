@@ -84,18 +84,18 @@ class PrincipalComponentAnalysisExample(BaseAnalysis):
         # generate the simulated spectra
         spectra = self.pca.inverse_transform(self.transform)
 
-        overlay: np.ndarray = self.upsampler(pca, sampling_coordinates=metadata.sampling_coordinates)
+        map: np.ndarray = self.upsampler(pca, sampling_coordinates=metadata.sampling_coordinates)
 
         if truncate_outliers:
-            min, max = np.percentile(overlay, [3, 97])
+            min, max = np.percentile(map, [3, 97])
             # clip outliers
-            overlay = np.clip(overlay, min, max)
+            map = np.clip(map, min, max)
 
         padding = (
-            (preview.shape[0] - overlay.shape[0]) // 2,
-            (preview.shape[1] - overlay.shape[1]) // 2,
+            (preview.shape[0] - map.shape[0]) // 2,
+            (preview.shape[1] - map.shape[1]) // 2,
         )
 
-        overlay = np.pad(overlay, ((padding[0], padding[0]), (padding[1], padding[1])))
+        pca_map = np.pad(map, ((padding[0], padding[0]), (padding[1], padding[1])))
 
-        return (metadata, preview, spectra), overlay
+        return None, pca_map, None

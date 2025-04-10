@@ -19,7 +19,7 @@ from lo.sdk.api.analysis.metrics import spectral_angles
 from lo.sdk.helpers.path import getdatastorepath
 
 
-# ### Setup
+# Setup
 
 PATH_TO_LO_RAW_FILE = os.path.join(
     getdatastorepath(),
@@ -27,17 +27,17 @@ PATH_TO_LO_RAW_FILE = os.path.join(
     "share",
     "samples",
     "face-spoofing",
-    "face-spoof-demo.lo-raw"
+    "face-spoof-demo.loraw"
 )
 
-factory_calibration_folder_DIR = os.path.join(getdatastorepath(), "lo", "share", "samples", "face-spoofing", "demo-calibration-face-spoofing")
+factory_calibration_folder = os.path.join(getdatastorepath(), "lo", "share", "samples", "face-spoofing", "demo-calibration-face-spoofing")
 SPECTRA_JSON_PATH = os.path.join(os.path.dirname(__file__), "..", "assets", "real_face_spectra.json")
 
 # Define facenet detector
 net = jetson_inference.detectNet("facenet", threshold=0.001)
 
 # Instantiate the spectral decoder
-decoder = SpectralDecoder.from_calibration(factory_calibration_folder_DIR)
+decoder = SpectralDecoder.from_calibration(factory_calibration_folder)
 
 # Load target spectra
 with open(SPECTRA_JSON_PATH) as f:
@@ -51,7 +51,7 @@ RESIZE_FACTOR = 0.5
 
 
 # - Define jetson-inference's detectNet
-# - Instantiate LO's spectral decoder object for run spectral analysis
+# - Instantiate the spectral decoder object for run spectral analysis
 # - Load target spectral data from a JSON file which is of the target face.
 # - Set classification threshold parameters
 
@@ -121,6 +121,6 @@ with lo_open(PATH_TO_LO_RAW_FILE) as f:
 cv2.destroyAllWindows()
 
 
-# - The decoder takes the LO's frame as input and outputs decoded spectra and formatted scene_frame according to the given formatter passed into the decoder.
-# - Using the bounding boxes from jetson-inference, use LO's `spectral_roi_classifier` method to classify the bounding boxes against the target spectra.
-# - Pass the output to LO's `draw_rois_and_labels` method to add classified bounding boxes' information as overlay on top of the scene_frame.
+# - The decoder takes the frames as input and outputs decoded spectra and formatted scene_frame according to the given formatter passed into the decoder.
+# - Using the bounding boxes from jetson-inference, use the `spectral_roi_classifier` method to classify the bounding boxes against the target spectra.
+# - Pass the output to the `draw_rois_and_labels` method to add classified bounding boxes' information as overlay on top of the scene_frame.

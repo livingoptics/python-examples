@@ -10,6 +10,7 @@ import numpy as np
 
 from lo.sdk.api.acquisition.data.coordinates import NearestUpSample
 from lo.sdk.tools.analysis.apps import BaseAnalysis
+from lo.sdk.tools.webcamera.utils.color_map import get_linear_cts_legend
 
 
 def band_ratio(spectra, wavelengths, band_one=(650, 680), band_two=(785, 900)):
@@ -46,11 +47,11 @@ class BandRatioAnalysisExample(BaseAnalysis):
         metadata, preview, spectra = loframe
 
         ratio = band_ratio(spectra, metadata.wavelengths, band_one=[band_one_min, band_one_max], band_two=[band_two_min, band_two_max])
-        upsampled = self.upsampler(ratio, metadata.sampling_coordinates)
+        map = self.upsampler(ratio, metadata.sampling_coordinates)
 
         padding = (
-            (preview.shape[0] - upsampled.shape[0]) // 2,
-            (preview.shape[1] - upsampled.shape[1]) // 2,
+            (preview.shape[0] - map.shape[0]) // 2,
+            (preview.shape[1] - map.shape[1]) // 2,
         )
-        upsampled = np.pad(upsampled, ((padding[0], padding[0]), (padding[1], padding[1])))
-        return loframe, upsampled
+        band_ratio_map = np.pad(map, ((padding[0], padding[0]), (padding[1], padding[1])))
+        return None, band_ratio_map, get_linear_cts_legend(-1, 1)

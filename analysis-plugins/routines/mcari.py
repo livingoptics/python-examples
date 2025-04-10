@@ -1,10 +1,12 @@
 # This file is subject to the terms and conditions defined in file
 # `COPYING.md`, which is part of this source code package.
-
+import math
 import numpy as np
 from lo.sdk.api.acquisition.data import Calibration
 from lo.sdk.api.acquisition.data.coordinates import NearestUpSample
 from lo.sdk.tools.analysis.apps.spectral_decode import SpectralDecode
+from lo.sdk.tools.webcamera.utils.color_map import get_linear_cts_legend
+from lo.sdk.tools.analysis.apps import BaseAnalysis
 
 def MCARI(
     spectral_list: np.ndarray,
@@ -45,42 +47,39 @@ def MCARI(
     start, stop = [np.argmin(np.abs(wavelengths - i)) for i in nir_limits]
     nir = spectral_list[:, start:stop].mean(axis=-1)
 
+    # Handle division by zero
+    red = np.where(red == 0, 1e-10, red)
+    
     return ((nir - red) - 0.2 * (nir - green)) * (nir / red)
 
 
 
-class MCARIAnalysis(SpectralDecode):
+class MCARIAnalysis(BaseAnalysis):
     def __init__(self, **kwargs):
         super(MCARIAnalysis, self).__init__(**kwargs)
-        self.upsampler = None
-
-    def init(self, calibration: Calibration, **kwargs):
-        super().init(calibration)
-        self.upsampler = NearestUpSample(calibration.sampling_coordinates, output_shape=(1920, 1920), origin=(64, 256))
-
-    def __call__(self, frame, spectrum_background: list, use_background: bool=False, **kwargs) -> tuple:
+        self.upsampler = NearestUpSample(output_shape=(1920, 1920), origin=(64, 256))
+        
+    def __call__(self, loframe, spectrum_background: list, use_background: bool=False, **kwargs) -> tuple:
         """Performs MCARI (Modified Chlorophyll Absorption in Reflectance Index) on a given frame
         Args:
             loframe (tuple): Decoded frame information from camera
             spectrum_background
             use_background
         """
-        loframe = self.spectral_decoder(frame)
-        spectra = loframe[2]
+        metadata, preview, spectra = loframe
         if use_background:
             spectrum_background = np.array(spectrum_background)
             r_spectra = spectra / spectrum_background
             r_spectra = np.clip(r_spectra, 0 ,1.0)
         else:
             r_spectra = spectra
-        print(loframe[0].wavelengths)
-        map = MCARI(r_spectra, loframe[0].wavelengths)
+        mcari = MCARI(r_spectra, metadata.wavelengths)
 
-        overlay = self.upsampler(map)
+        map = self.upsampler(mcari, metadata.sampling_coordinates)
 
         padding = (
-            (frame[1][1].shape[0] - overlay.shape[0]) // 2,
-            (frame[1][1].shape[1] - overlay.shape[1]) // 2,
+            (preview.shape[0] - map.shape[0]) // 2,
+            (preview.shape[1] - map.shape[1]) // 2,
         )
-        mcari_map = np.pad(overlay, ((padding[0], padding[0]), (padding[1], padding[1])))
-        return frame, spectra, mcari_map
+        mcari_map = np.pad(map, ((padding[0], padding[0]), (padding[1], padding[1])))
+        return None, mcari_map, get_linear_cts_legend(-math.inf, math.inf)

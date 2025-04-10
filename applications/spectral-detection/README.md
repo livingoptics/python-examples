@@ -20,7 +20,7 @@ pip install -r sd-requirements.txt
 ## Sample data
 
 Sample data can be found
-[here](https://cloud.livingoptics.com/shared-resources?file=samples/spectral-detection.zip).
+[here](https://cloud.livingoptics.com/shared-resources?file=samples_v2/spectral-detection.zip).
 
 ## Usage
 
@@ -33,7 +33,6 @@ This example comes in two forms, both of which require the Living Optics SDK to 
 The scripts will require updates to the following variables.
 
 - filepath - enter the path to an `.lo` format video.
-- factory_calibration_folder - enter the path to the Living Optics camera Factory calibration folder.
 - classifier_path - path to sklearn knn classifier.
 - scaler_path - path to sklearn scaler transformation.
 - masks - path to segmentation mask file.
@@ -71,6 +70,5 @@ export PYTHONPATH="${PYTHONPATH}:`pwd`"
 
 ```bash
 analysis 
---file  PATH_TO_LORAW_FILE
---calibration-path PATH_TO_LO_FACTORY_CALIBRATION
+--file  PATH_TO_LO_FILE
 ```
