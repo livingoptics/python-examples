@@ -10,7 +10,7 @@ from lo.sdk.tools.analysis.apps import BaseAnalysis
 from sklearn.cluster import KMeans
 
 _logger = logging.getLogger(__name__)
-
+    
 
 class KMeansClustering(BaseAnalysis):
     def __init__(self, **kwargs):

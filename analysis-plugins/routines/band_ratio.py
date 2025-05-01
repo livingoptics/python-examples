@@ -10,7 +10,7 @@ import numpy as np
 
 from lo.sdk.api.acquisition.data.coordinates import NearestUpSample
 from lo.sdk.tools.analysis.apps import BaseAnalysis
-from lo.sdk.tools.webcamera.utils.color_map import get_linear_cts_legend
+from lo.sdk.helpers.color import get_linear_cts_legend
 
 
 def band_ratio(spectra, wavelengths, band_one=(650, 680), band_two=(785, 900)):

@@ -2,7 +2,6 @@
 # `COPYING.md`, which is part of this source code package.
 
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.cluster import MeanShift
 
 from lo.sdk.api.acquisition.data.coordinates import NearestUpSample

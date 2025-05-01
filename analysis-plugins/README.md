@@ -33,8 +33,6 @@ source /PATH/TO/ACTIVATE/VENV/BIN/ACTIVATE
 
 ```bash
 export PYTHONPATH="${PYTHONPATH}:/PATH/TO/LOCATION/OF/ANALYSIS/ROUTINE"
-# export PYTHONPATH="${PYTHONPATH}:/home/seonghyun/venv/venv_github/lib/python3.12/site-packages/lo/sdk/tools/analysis"
-
 ```
 
 Then run the `analysis` tool with the plugin:

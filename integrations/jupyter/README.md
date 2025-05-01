@@ -21,9 +21,9 @@ pip install -r requirements.txt
 
 Download sample data from the [Living Optics cloud portal](https://cloud.livingoptics.com/shared-resources?file=samples_v2/face-spoofing.zip).
 
-Example | Jupyter Notebook | data|
-:--------------------|:--------------------------------------|-------|
-Stream from a Living Optics Camera | [Notebook](notebooks/stream.ipynb) | 
-Stream to file decoded | [Notebook](notebooks/stream_to_file_decoded.ipynb) | 
-Face detection using jetson-inference | [Notebook](notebooks/face_detection.ipynb) |  [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/face-spoofing.zip)
-Face detection using jetson-inference and Spectral filtering | [Notebook](notebooks/face_detection_with_spectral_filtering.ipynb) | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/face-spoofing.zip)
+| Example                                                      | Jupyter Notebook                                                   | data                                                                                      |
+|:-------------------------------------------------------------|:-------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| Stream from a Living Optics Camera                           | [Notebook](notebooks/stream.ipynb)                                 |                                                                                           |
+| Stream to file decoded                                       | [Notebook](notebooks/stream_to_file_decoded.ipynb)                 |                                                                                           |
+| Face detection using jetson-inference                        | [Notebook](notebooks/face_detection.ipynb)                         | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/face-spoofing.zip) |
+| Face detection using jetson-inference and Spectral filtering | [Notebook](notebooks/face_detection_with_spectral_filtering.ipynb) | [data](https://cloud.livingoptics.com/shared-resources?file=samples_v2/face-spoofing.zip) |
