@@ -20,7 +20,7 @@ pip install -r eod-requirements.txt
 ## Sample data
 
 Sample data can be found
-[here](https://cloud.livingoptics.com/shared-resources?file=samples_v2/enhanced-object-detection.zip)
+[here](https://cloud.livingoptics.com/shared-resources?file=data/samples_v2/enhanced-object-detection.zip)
 
 ## Usage
 

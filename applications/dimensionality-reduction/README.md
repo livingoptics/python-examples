@@ -25,7 +25,7 @@ This preview shows how PCA can used to identify different clusters on a macbeth 
 ## Sample data
 
 Sample data can be found
-[here](https://cloud.livingoptics.com/shared-resources?file=samples_v2/macbeth.zip)
+[here](https://cloud.livingoptics.com/shared-resources?file=data/samples_v2/macbeth.zip)
 
 ## Usage
 
